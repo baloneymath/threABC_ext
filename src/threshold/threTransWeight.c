@@ -128,18 +128,18 @@ void Th_ObjSortWeight(Thre_S* tObj) {
                 // swap weight
                 int wj = Vec_IntEntry(tObj->weights, j);
                 int wk = Vec_IntEntry(tObj->weights, k);
-                Vec_IntSetEntry(tObj->weights, k, wj);
-                Vec_IntSetEntry(tObj->weights, j, wk);
+                Vec_IntWriteEntry(tObj->weights, k, wj);
+                Vec_IntWriteEntry(tObj->weights, j, wk);
                 // swap fanin
                 int idj = Vec_IntEntry(tObj->Fanins, j);
                 int idk = Vec_IntEntry(tObj->Fanins, k);
-                Vec_IntSetEntry(tObj->Fanins, k, idj);
-                Vec_IntSetEntry(tObj->Fanins, j, idk);
+                Vec_IntWriteEntry(tObj->Fanins, k, idj);
+                Vec_IntWriteEntry(tObj->Fanins, j, idk);
                 // swap faninC
                 int cj = Vec_IntEntry(tObj->FaninCs, j);
                 int ck = Vec_IntEntry(tObj->FaninCs, k);
-                Vec_IntSetEntry(tObj->FaninCs, k, cj);
-                Vec_IntSetEntry(tObj->FaninCs, j, ck);
+                Vec_IntWriteEntry(tObj->FaninCs, k, cj);
+                Vec_IntWriteEntry(tObj->FaninCs, j, ck);
             }
         }
     }

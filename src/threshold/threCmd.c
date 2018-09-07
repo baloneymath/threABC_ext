@@ -944,8 +944,7 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
         Th_IterativeUpdatePQ(current_TList, Golden_Vec);
     }
     Th_RemoveDummy();
-    Abc_Print(ABC_STANDARD, "Weight&Threshold Cost(Before): %f\n", Th_NtkCost2(current_TList));
-    Th_NtkReWeight(current_TList);
+    /*Th_NtkReWeight(current_TList);*/
     Abc_PrintTime(ABC_STANDARD, "Extract Time:", Abc_Clock() - clk);
     Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost(current_TList));
     Abc_Print(ABC_STANDARD, "Weight&Threshold Cost: %f\n", Th_NtkCost2(current_TList));

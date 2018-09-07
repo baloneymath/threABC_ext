@@ -56,7 +56,10 @@ void Th_NtkReWeight(Vec_Ptr_t* vThres) {
     Vec_PtrForEachEntry(Thre_S*, vThres, tObj, i) {
         if (tObj->Type == Th_CONST1 || tObj->Type == Th_Pi || tObj->Type == Th_Po)
             continue;
-        if (Vec_IntFind(tObj->dtypes, 2) != -1) continue;
+        if (Vec_IntFind(tObj->dtypes, 2) != -1)  {
+            // printf("Not 1-DL\n");
+            continue;
+        }
         Th_ObjReWeight(tObj);
     }
 }
@@ -91,7 +94,7 @@ void Th_ObjReWeight(Thre_S* tObj) {
         else if (Vec_IntEntry(tObj->dtypes, i) == 0) {
             newThre = sumW + 1;
             Vec_IntWriteEntry(tObj->weights, i, newThre - oldThre);
-            sumW += newThre - oldThre;
+            sumW += (newThre - oldThre);
             oldThre = newThre;
         }
         else assert(0);

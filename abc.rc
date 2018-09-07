@@ -188,6 +188,7 @@ alias ecexp2 "thexp1; NZ; OAO"
 alias ecexp3 "thexp1; OAO;"
 
 # Hao & Adi
-alias tw    "transWeight_th"
-alias 1dl   "1DLverify_th"
-alias thgen "thexp1; pt; tw; thExt; pt"
+alias tw     "transWeight_th"
+alias 1dl    "1DLverify_th"
+alias thgen  "thexp1; pt; tw; thExt; pt"
+alias thgen2 "comb; fraig; synthio; pt; tw; thExt; pt"
