@@ -931,7 +931,6 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
     Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost(current_TList));
     Abc_Print(ABC_STANDARD, "Weight&Threshold Cost: %f\n", Th_NtkCost2(current_TList));
     Abc_Print(ABC_STANDARD, "FPGA LUT Cost: %f\n", Th_NtkCost3(current_TList));
-    /*Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost2(current_TList));*/
     Abc_Print(ABC_STANDARD, "Extracting....\n");
     abctime clk = Abc_Clock();
     Th_NtkTh2DList(current_TList);
@@ -939,7 +938,6 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
     //    Th_IterativeUpdate(current_TList, Vec_PtrEntry(Golden_Vec, i));
     // }     
     while (1) {
-    /*for (i = 0; i < 5; ++i) {  */
         if (Vec_PtrSize(Golden_Vec) == 0) break;               
         Th_IterativeUpdatePQ(current_TList, Golden_Vec);
     }
@@ -949,7 +947,6 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
     Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost(current_TList));
     Abc_Print(ABC_STANDARD, "Weight&Threshold Cost: %f\n", Th_NtkCost2(current_TList));
     Abc_Print(ABC_STANDARD, "FPGA LUT Cost: %f\n", Th_NtkCost3(current_TList));
-    /*Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost2(current_TList));*/
 
     Th_NtkTransBack(current_TList);
     return 0;
