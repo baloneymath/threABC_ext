@@ -79,18 +79,18 @@ void Th_ObjReWeight(Thre_S* tObj) {
     int newThre = 1;
     Vec_IntForEachEntryReverse(tObj->Fanins, id, i) {
         if (i == Vec_IntSize(tObj->Fanins) - 1) {
-            Vec_IntSetEntry(tObj->weights, i, 1);
+            Vec_IntWriteEntry(tObj->weights, i, 1);
             sumW = 1;
             oldThre = 1;
         }
         else if (Vec_IntEntry(tObj->dtypes, i) == 1) {
             newThre = oldThre;
-            Vec_IntSetEntry(tObj->weights, i, oldThre);
+            Vec_IntWriteEntry(tObj->weights, i, oldThre);
             sumW += oldThre;
         }
         else if (Vec_IntEntry(tObj->dtypes, i) == 0) {
             newThre = sumW + 1;
-            Vec_IntSetEntry(tObj->weights, i, newThre - oldThre);
+            Vec_IntWriteEntry(tObj->weights, i, newThre - oldThre);
             sumW += newThre - oldThre;
             oldThre = newThre;
         }
