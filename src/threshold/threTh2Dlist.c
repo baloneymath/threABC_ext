@@ -307,7 +307,7 @@ void   Th_DLBuildSets(Vec_Ptr_t * vThres)
         }
         Vec_IntFree(temp_set);
     }
-    printf("Build Done!\n");
+    // printf("Build Done!\n");
 }
 
 int compare(Th_Set** i1, Th_Set** i2) {

@@ -94,6 +94,7 @@ void Th_ObjReWeight(Thre_S* tObj) {
             sumW += newThre - oldThre;
             oldThre = newThre;
         }
+        else assert(0);
     }
     tObj->thre = newThre;
 }
