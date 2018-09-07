@@ -56,6 +56,7 @@ void Th_NtkReWeight(Vec_Ptr_t* vThres) {
     Vec_PtrForEachEntry(Thre_S*, vThres, tObj, i) {
         if (tObj->Type == Th_CONST1 || tObj->Type == Th_Pi || tObj->Type == Th_Po)
             continue;
+        if (Vec_IntFind(tObj->dtypes, 2) != -1) continue;
         Th_ObjReWeight(tObj);
     }
 }

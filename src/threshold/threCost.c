@@ -79,9 +79,7 @@ double Th_NtkCost2(Vec_Ptr_t * vThres) {
     int nTh = 0;
     Vec_PtrForEachEntry(Thre_S*, vThres, tObj, i) {
       if (tObj->Type != Th_Node) continue;
-      /*cost += Th_ObjCost2(tObj);*/
-      /*cost += 2 * (Vec_IntSize(tObj->Fanins)+1) + 4;*/
-      cost += Vec_IntSize(tObj->Fanins);
+      cost += Th_ObjCost2(tObj);
     }
     return cost;
 }
