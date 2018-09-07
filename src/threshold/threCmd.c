@@ -929,7 +929,8 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
     Th_NtkDfs(current_TList);
     int i;
     Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost(current_TList));
-    Abc_Print(ABC_STANDARD, "Weight&Threshold Cost: %f\n", Th_NtkCost2(current_TList));
+    Abc_Print(ABC_STANDARD, "Weight Cost: %f\n", Th_NtkCost2(current_TList));
+    Abc_Print(ABC_STANDARD, "Threshold Cost: %f\n", Th_NtkCostThre(current_TList));
     Abc_Print(ABC_STANDARD, "FPGA LUT Cost: %f\n", Th_NtkCost3(current_TList));
     Abc_Print(ABC_STANDARD, "Extracting....\n");
     abctime clk = Abc_Clock();
@@ -945,7 +946,8 @@ int Abc_CommandThreExtract(Abc_Frame_t* pAbc, int argc, char** argv)
     /*Th_NtkReWeight(current_TList);*/
     Abc_PrintTime(ABC_STANDARD, "Extract Time:", Abc_Clock() - clk);
     Abc_Print(ABC_STANDARD, "Wire Cost: %f\n", Th_NtkCost(current_TList));
-    Abc_Print(ABC_STANDARD, "Weight&Threshold Cost: %f\n", Th_NtkCost2(current_TList));
+    Abc_Print(ABC_STANDARD, "Weight Cost: %f\n", Th_NtkCost2(current_TList));
+    Abc_Print(ABC_STANDARD, "Threshold Cost: %f\n", Th_NtkCostThre(current_TList));
     Abc_Print(ABC_STANDARD, "FPGA LUT Cost: %f\n", Th_NtkCost3(current_TList));
 
     Th_NtkTransBack(current_TList);

@@ -224,6 +224,7 @@ extern int    compare(Th_Set** i1, Th_Set** i2);
 extern double Th_NtkCost(Vec_Ptr_t *);
 extern double Th_NtkCost2(Vec_Ptr_t *);
 extern double Th_NtkCost3(Vec_Ptr_t *);
+extern double Th_NtkCostThre(Vec_Ptr_t *);
 
 //===threReWeight.c================================//
 extern void   Th_NtkReWeight(Vec_Ptr_t *);

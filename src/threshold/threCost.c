@@ -36,8 +36,9 @@
 ////////////////////////////////////////////////////////////////////////
 
 double Th_NtkCost(Vec_Ptr_t *);
-double Th_NtkCost2(Vec_Ptr_t *);
+double Th_NtkCost2(Vec_Ptr_t *); // Weight
 double Th_NtkCost3(Vec_Ptr_t *);
+double Th_NtkCostThre(Vec_Ptr_t *);
 int Th_ObjCost(Thre_S *);
 int Th_ObjCost2(Thre_S *);
 int Th_ObjCost3(Thre_S *);
@@ -66,6 +67,16 @@ double Th_NtkCost(Vec_Ptr_t * vThres) {
     }
     return cost;
     // return 0.5 * cost + 0.5 * nTh;
+}
+double Th_NtkCostThre(Vec_Ptr_t * vThres) {
+  int cost = 0;
+  Thre_S* tObj;
+  int i;
+  Vec_PtrForEachEntry(Thre_S*, vThres, tObj, i) {
+    if (tObj->Type != Th_Node) continue;
+    cost += tObj->thre;
+  }
+  return cost;
 }
 
 int Th_ObjCost(Thre_S * tObj) {
@@ -100,7 +111,7 @@ int Th_ObjCost2(Thre_S * tObj) {
     Vec_IntForEachEntry(tObj->weights, w, i) {
       cost += w;
     }
-    cost += tObj->thre;
+    // cost += tObj->thre;
     return cost;
 }
 
@@ -127,9 +138,10 @@ int Th_ObjCost3(Thre_S * tObj) {
 
 
 
-    default: {
-      printf("Too much Fanins : %d\n", s);
-      return 0;
-    }
+    ddouble Th_NtkCostThre(Vec_Ptr_t *)
+     double Th_NtkCostThre(Vec_Ptr_t *)ins : %d\n", s);
+     double Th_NtkCostThre(Vec_Ptr_t *)
+    }double Th_NtkCostThre(Vec_Ptr_t *)
   }*/
 }
+
