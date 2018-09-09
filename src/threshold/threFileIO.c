@@ -48,7 +48,8 @@ Vec_Ptr_t* func_readFileOAO(char* fileName)
     Vec_Int_t* iCount; // counting Fanins
     iCount = Vec_IntAlloc( 10 );   
     
-    char buf[1000], buf2[1000];
+    const int bufSize = 100000;
+    char buf[bufSize], buf2[bufSize];
     int piCount = 0;
     int poCount = 0;
     int tgCount = 0;
@@ -56,11 +57,11 @@ Vec_Ptr_t* func_readFileOAO(char* fileName)
 
     /*** parse gate counts ***/
     // first line: ignore
-    fgets( buf, 1000, inFile);
+    fgets( buf, bufSize, inFile);
     // get modelName
     fscanf( inFile, "%s%s", buf, buf2);
     if ( !strncmp(buf, ".model", 6) )
-        Vec_StrPushBuffer( moduleName, buf2, 1000 );
+        Vec_StrPushBuffer( moduleName, buf2,  bufSize);
     printf("\tmoduleName:%s\n", moduleName->pArray);
     // PI count    
     fscanf( inFile , "%s", buf );
@@ -101,8 +102,8 @@ Vec_Ptr_t* func_readFileOAO(char* fileName)
     rewind(inFile);
     // initialize  containers
     vTG = Vec_PtrAlloc( tgCount + piCount );
-    fgets( buf, 1000, inFile ); // Threshold logic gates synthesis
-    fgets( buf, 1000, inFile ); // .model <modelName>
+    fgets( buf, bufSize, inFile ); // Threshold logic gates synthesis
+    fgets( buf, bufSize, inFile ); // .model <modelName>
 
     int i, j, intBuf;
     int idCount = 0;
@@ -127,11 +128,11 @@ Vec_Ptr_t* func_readFileOAO(char* fileName)
         newGate->Type = 2;
         Vec_PtrPush( vTG, newGate );
     }
-    fgets( buf, 1000, inFile ); // read '\n' at the bottom of the line
+    fgets( buf, bufSize, inFile ); // read '\n' at the bottom of the line
     for( i = 0; i < tgCount; ++i ){
         if ( i < poCount ){
-            fgets( buf, 1000, inFile );// ignore 2 lines
-            fgets( buf, 1000, inFile );
+            fgets( buf, bufSize, inFile );// ignore 2 lines
+            fgets( buf, bufSize, inFile );
         }
         else{
             for( j = 0; j < Vec_IntEntry( iCount, i );++j ){
@@ -141,17 +142,17 @@ Vec_Ptr_t* func_readFileOAO(char* fileName)
             Thre_S* newGate = newThre( idCount++, buf2);
             newGate->Type = 3;
             Vec_PtrPush( vTG, newGate );
-            fgets( buf, 1000, inFile ); // read '\n' at the bottom of the line
-            fgets( buf, 1000, inFile ); // ignore 1 line
+            fgets( buf, bufSize, inFile ); // read '\n' at the bottom of the line
+            fgets( buf, bufSize, inFile ); // ignore 1 line
         }
     }
     // reRead inFile
     rewind(inFile);
-    fgets( buf, 1000, inFile ); // Threshold logic gates synthesis
-    fgets( buf, 1000, inFile ); // .model <modelName>
+    fgets( buf, bufSize, inFile ); // Threshold logic gates synthesis
+    fgets( buf, bufSize, inFile ); // .model <modelName>
     for ( i = 0; i < piCount + poCount +2; ++i)
         fscanf( inFile, "%s", buf );
-    fgets( buf, 1000, inFile ); // read '\n' at the bottom of the line
+    fgets( buf, bufSize, inFile ); // read '\n' at the bottom of the line
    
     for (i = 0; i < tgCount; ++i){
                                                 // + 1 for constGate
