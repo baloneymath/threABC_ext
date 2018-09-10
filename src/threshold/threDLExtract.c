@@ -529,15 +529,15 @@ void Th_ObjUpdate(Vec_Ptr_t * vThres, Thre_S * tObj) {
             Vec_IntDrop(fanoutG->FaninCs, index);
             Vec_IntDrop(fanoutG->dtypes, index);
         }
-        // printf("%d\n",fanoutG->Id);
-        // Vec_IntInsert(fanoutG->Fanins, index, tObj->Id);
-        // Vec_IntInsert(fanoutG->FaninCs, index, 0); // must be 0
-        // Vec_IntInsert(fanoutG->dtypes, index, Vec_IntEntry(tObj->dtypes, 0));
-        // Vec_IntInsert(fanoutG->weights, index, weight_old); 
-        Vec_IntPush(fanoutG->Fanins, tObj->Id);
-        Vec_IntPush(fanoutG->FaninCs, 0); // must be 0
-        Vec_IntPush(fanoutG->dtypes, Vec_IntEntry(tObj->dtypes, 0));
-        Vec_IntPush(fanoutG->weights, weight_old); 
+         /*printf("%d\n",fanoutG->Id);*/
+         Vec_IntInsert(fanoutG->Fanins, index, tObj->Id);
+         Vec_IntInsert(fanoutG->FaninCs, index, 0); // must be 0
+         Vec_IntInsert(fanoutG->dtypes, index, Vec_IntEntry(tObj->dtypes, 0));
+         Vec_IntInsert(fanoutG->weights, index, weight_old); 
+        /*Vec_IntPush(fanoutG->Fanins, tObj->Id);                     */
+        /*Vec_IntPush(fanoutG->FaninCs, 0); // must be 0              */
+        /*Vec_IntPush(fanoutG->dtypes, Vec_IntEntry(tObj->dtypes, 0));*/
+        /*Vec_IntPush(fanoutG->weights, weight_old);                  */
         if(Vec_IntEntry(tObj->dtypes, 0) == 0)
             fanoutG->thre -= ccc - weight_old;
         Th_ObjSortWeight(fanoutG);
