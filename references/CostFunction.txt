@@ -1,0 +1,7 @@
+1.  threRewire14.pdf : summation of the weights and threshold
+      After synthesizing by "threslogic04.pdf"
+
+2.  threRewire11.pdf : wire count
+      After synthesizing by "threslogic04.pdf"
+      
+3.  threslogic-decompose.pdf : number of gates and levels
